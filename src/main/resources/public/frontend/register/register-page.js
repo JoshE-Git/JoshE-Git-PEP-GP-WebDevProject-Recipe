@@ -52,7 +52,7 @@ async function processRegistration() {
             throw new Error(`Passwords must match.`);
         }
 
-        const registerBody = {username: usernameInput.value, email: emailInput.value, password: passwordInput.value};
+        const registerBody = {usernameInput.value, emailInput.value, passwordInput.value};
 
         const request = new Request(`${BASE_URL}/register`, requestOptions);
         let response = await fetch(request);
