@@ -8,12 +8,16 @@ const BASE_URL = "http://localhost:8081"; // backend URL
  * TODO: Get references to various DOM elements
  * - usernameInput, emailInput, passwordInput, repeatPasswordInput, registerButton
  */
-
+let username = document.getElementById("username-input");
+let email = document.getElementById("email-input");
+let password = document.getElementById("password-input");
+let repeatedPassword = document.getElementById("repeat-password-input");
+let register = document.getElementById("register-button");
 
 /* 
  * TODO: Ensure the register button calls processRegistration when clicked
  */
-
+register.addEventListener("click", processRegistration);
 
 /**
  * TODO: Process Registration Function
@@ -40,7 +44,35 @@ const BASE_URL = "http://localhost:8081"; // backend URL
  */
 async function processRegistration() {
     // Implement registration logic here
+    try{
+        if(!username.value || !email.value || !password.value || !repeatedPassword.value){
+            throw new Error(`Field(s) are empty.`);
+        }
+        if(password.value != repeatedPassword.value){
+            throw new Error(`Passwords must match.`);
+        }
 
+        const registerBody = {username: username.value, email: email.value, password: password.value};
+
+        const response = await fetch(`${BASE_URL}/register`, requestOptions);
+
+        if(response.statusText == "Created"){
+            const data = await response.json();
+            console.log(`Fetched data: `, data);
+
+            window.location.href = "login-page.html";
+        }
+        else if(response.statusText == "Conflict"){
+            console.error(`User/email already exisit`, response.status, response.statusText);
+        }
+        else{
+            console.error(`Error with registration: `, response.status, response.statusText);
+        }
+
+
+    } catch(error){
+        console.error(`Error: `, error);
+    }
     // Example placeholder:
     // const registerBody = { username, email, password };
 const requestOptions = {
@@ -59,3 +91,4 @@ const requestOptions = {
     };
     // await fetch(...)
 }
+
