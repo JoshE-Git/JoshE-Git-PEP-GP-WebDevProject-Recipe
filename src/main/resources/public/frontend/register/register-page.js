@@ -56,13 +56,13 @@ async function processRegistration() {
 
         const response = await fetch(`${BASE_URL}/register`, requestOptions);
 
-        if(response.statusText == "Created"){
+        if(response.status == 201){
             const data = await response.json();
             console.log(`Fetched data: `, data);
 
             window.location.href = "login-page.html";
         }
-        else if(response.statusText == "Conflict"){
+        else if(response.status == 409){
             console.error(`User/email already exisit`, response.status, response.statusText);
         }
         else{
