@@ -55,7 +55,7 @@ async function processRegistration() {
         const registerBody = {username: usernameInput.value, email: emailInput.value, password: passwordInput.value};
 
         const request = new Request(`${BASE_URL}/register`, requestOptions);
-        let response = fetch(request);
+        let response = await fetch(request);
 
         if(response.status == 201){
             const data = await response.json();
