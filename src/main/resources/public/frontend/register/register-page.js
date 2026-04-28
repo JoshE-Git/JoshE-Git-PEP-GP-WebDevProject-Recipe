@@ -60,7 +60,7 @@ async function processRegistration() {
             const data = await response.json();
             console.log(`Fetched data: `, data);
 
-            window.location.href = "login-page.html";
+            window.location.href = "src/main/resources/public/frontend/login";
         }
         else if(response.status == 409){
             console.error(`User/email already exisit`, response.status, response.statusText);
