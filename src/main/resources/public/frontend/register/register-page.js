@@ -8,16 +8,16 @@ const BASE_URL = "http://localhost:8081"; // backend URL
  * TODO: Get references to various DOM elements
  * - usernameInput, emailInput, passwordInput, repeatPasswordInput, registerButton
  */
-let username = document.getElementById("username-input");
-let email = document.getElementById("email-input");
-let password = document.getElementById("password-input");
-let repeatedPassword = document.getElementById("repeat-password-input");
-let register = document.getElementById("register-button");
+let usernameInput = document.getElementById("username-input");
+let emailInput = document.getElementById("email-input");
+let passwordInput = document.getElementById("password-input");
+let repeatedPasswordInput = document.getElementById("repeat-password-input");
+let registerButton = document.getElementById("register-button");
 
 /* 
  * TODO: Ensure the register button calls processRegistration when clicked
  */
-register.addEventListener("click", processRegistration);
+registerButton.addEventListener("click", processRegistration);
 
 /**
  * TODO: Process Registration Function
@@ -45,14 +45,14 @@ register.addEventListener("click", processRegistration);
 async function processRegistration() {
     // Implement registration logic here
     try{
-        if(!username.value || !email.value || !password.value || !repeatedPassword.value){
+        if(!usernameInput.value || !emailInput.value || !passwordInput.value || !repeatedPasswordInput.value){
             throw new Error(`Field(s) are empty.`);
         }
-        if(password.value != repeatedPassword.value){
+        if(passwordInput.value != repeatedPasswordInput.value){
             throw new Error(`Passwords must match.`);
         }
 
-        const registerBody = {username: username.value, email: email.value, password: password.value};
+        const registerBody = {username: usernameInput.value, email: emailInput.value, password: passwordInput.value};
 
         const response = await fetch(`${BASE_URL}/register`, requestOptions);
 
