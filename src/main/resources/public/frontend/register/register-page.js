@@ -46,22 +46,26 @@ async function processRegistration() {
     // Implement registration logic here
     try{
         if(!usernameInput.value || !emailInput.value || !passwordInput.value || !repeatedPasswordInput.value){
-            throw new Error(`Field(s) are empty.`);
+            //throw new Error(`Field(s) are empty.`);
         }
         if(passwordInput.value != repeatedPasswordInput.value){
-            throw new Error(`Passwords must match.`);
+            //throw new Error(`Passwords must match.`);
         }
 
         const registerBody = {username: usernameInput.value, email: emailInput.value, password: passwordInput.value};
 
         const request = new Request(`${BASE_URL}/register`, requestOptions);
-        let response = await fetch(request);
+        let response = fetch(request);
 
         if(response.status == 201){
             const data = await response.json();
             console.log(`Fetched data: `, data);
 
-           // window.location.href = "login-page.html";
+
+            setTimeout(() => {
+                window.location.href = "login-page.html";
+            }, 500);
+           
         }
         else if(response.status == 409){
             console.error(`User/email already exisit`, response.status, response.statusText);
