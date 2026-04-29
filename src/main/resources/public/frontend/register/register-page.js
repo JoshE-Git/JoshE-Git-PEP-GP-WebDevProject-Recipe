@@ -45,14 +45,18 @@ registerButton.addEventListener("click", processRegistration);
 async function processRegistration() {
     // Implement registration logic here
     try{
-        if(!usernameInput.value || !emailInput.value || !passwordInput.value || !repeatedPasswordInput.value){
+        let username = usernameInput.value;
+        let email = emailInput.value;
+        let password = passwordInput.value;
+        let repeatedPassword = repeatedPasswordInput.value;
+        if(!username || !email || !password || !repeatedPassword){
             //throw new Error(`Field(s) are empty.`);
         }
-        if(passwordInput.value != repeatedPasswordInput.value){
+        if(password != repeatedPassword){
             //throw new Error(`Passwords must match.`);
         }
 
-        const registerBody = {username: usernameInput.value, email: emailInput.value, password: passwordInput.value};
+        const registerBody = {username: username, email: email, password: password};
 
         const response = await fetch(`${BASE_URL}/register`, requestOptions);
         
