@@ -52,7 +52,7 @@ async function processRegistration() {
             throw new Error(`Passwords must match.`);
         }
 
-        const registerBody = {usernameInput.value, emailInput.value, passwordInput.value};
+        const registerBody = {username: usernameInput.value, email: emailInput.value, password: passwordInput.value};
 
         const request = new Request(`${BASE_URL}/register`, requestOptions);
         let response = await fetch(request);
@@ -61,7 +61,7 @@ async function processRegistration() {
             const data = await response.json();
             console.log(`Fetched data: `, data);
 
-            window.location.href = "src/main/resources/public/frontend/login";
+           // window.location.href = "login-page.html";
         }
         else if(response.status == 409){
             console.error(`User/email already exisit`, response.status, response.statusText);
