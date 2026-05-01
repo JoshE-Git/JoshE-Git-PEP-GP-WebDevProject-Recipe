@@ -160,6 +160,37 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function getRecipes() {
         // Implement get logic here
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify("")
+        };
+
+        try{
+            let request = await fetch(BASE_URL, requestOptions);
+            const data = await request.json();
+
+            let arrIndex = 0;
+
+            for(element in data){
+                recipes[arrIndex] = {name: element.name, recipe: element.instructions};
+                ++arrIndex;
+            }
+
+            refreshRecipeList;
+        }catch(error){
+            console.error(`Error: `, error);
+        }
+
     }
 
     /**
