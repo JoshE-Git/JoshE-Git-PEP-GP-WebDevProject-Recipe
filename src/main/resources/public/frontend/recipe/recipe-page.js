@@ -32,14 +32,22 @@ window.addEventListener("DOMContentLoaded", () => {
    let addInstructionInput = document.getElementById("add-recipe-instructions-input");
    let updateInstructionInput = document.getElementById("update-recipe-instructions-input");
 
+   /*let hiddenLogout = logoutButton.getAttribute("hidden");
+   let hiddenAdminLink = adminLink.getAttribute("hidden");*/
+
     /*
      * TODO: Show logout button if auth-token exists in sessionStorage
      */
-    
+    if(sessionStorage.getItem("auth-token")){
+        logoutButton.removeAttribute("hidden");    
+    }
 
     /*
      * TODO: Show admin link if is-admin flag in sessionStorage is "true"
      */
+    if(sessionStorage.getItem("is-admin")){
+        adminLink.removeAttribute("hidden");
+    }
 
     /*
      * TODO: Attach event handlers
@@ -49,6 +57,11 @@ window.addEventListener("DOMContentLoaded", () => {
      * - Search button → searchRecipes()
      * - Logout button → processLogout()
      */
+    searchButton.addEventListener("click", searchRecipes);
+    addRecipeButton.addEventListener("click", addRecipe);
+    updateRecipeButton.addEventListener("click", updateRecipe);
+    deleteRecipeButton.addEventListener("click", deleteRecipe);
+    logoutButton.addEventListener("click", processLogout);
 
     /*
      * TODO: On page load, call getRecipes() to populate the list
