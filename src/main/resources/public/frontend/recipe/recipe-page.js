@@ -35,6 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     /*
      * TODO: Show logout button if auth-token exists in sessionStorage
      */
+    
 
     /*
      * TODO: Show admin link if is-admin flag in sessionStorage is "true"
