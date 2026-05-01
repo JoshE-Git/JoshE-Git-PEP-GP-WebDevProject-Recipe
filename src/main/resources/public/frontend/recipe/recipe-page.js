@@ -18,6 +18,8 @@ window.addEventListener("DOMContentLoaded", () => {
     */
    let adminLink = document.getElementById("admin-link");
 
+   let recipeList = document.getElementById("recipe-list");
+
    let logoutButton = document.getElementById("logout-button");
    let searchButton = document.getElementById("search-button");
    let addRecipeButton = document.getElementById("add-recipe-submit-input");
@@ -31,6 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
    let addInstructionInput = document.getElementById("add-recipe-instructions-input");
    let updateInstructionInput = document.getElementById("update-recipe-instructions-input");
+
 
    /*let hiddenLogout = logoutButton.getAttribute("hidden");
    let hiddenAdminLink = adminLink.getAttribute("hidden");*/
@@ -66,6 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
     /*
      * TODO: On page load, call getRecipes() to populate the list
      */
+    window.onload = function(){getRecipes();};
 
 
     /**
@@ -77,6 +81,40 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function searchRecipes() {
         // Implement search logic here
+        let search = searchInput.value;
+
+        const requestBody = {search: search};
+
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify(requestBody)
+        };
+
+        try{
+            let request = await fetch(BASE_URL, requestOptions);
+            const data = await request.json();
+
+            //Somethings goes here
+
+
+
+
+
+
+
+        }catch(error){
+            console.error(`Error: `, error);
+        }
     }
 
     /**
@@ -132,6 +170,15 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     function refreshRecipeList() {
         // Implement refresh logic here
+        recipeList.innerHTML = "";
+
+        recipes.forEach(
+            function(name, recipe){
+                let liElement = document.createElement("li");
+                liElement.innerText = `${name} ${recipe}`;
+                recipeList.appendChild(liElement);
+            }
+        )
     }
 
     /**
