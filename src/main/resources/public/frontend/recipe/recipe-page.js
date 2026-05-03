@@ -124,6 +124,7 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function addRecipe() {
         // Implement add logic here
+        let addRecipe = 
     }
 
     /**
