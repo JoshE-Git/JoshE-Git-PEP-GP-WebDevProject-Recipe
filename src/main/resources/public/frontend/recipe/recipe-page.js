@@ -147,7 +147,7 @@ window.addEventListener("DOMContentLoaded", () => {
         try{
             await fetch(`${BASE_URL}/recipes`, requestOptions);
             getRecipes;
-            
+
         }catch(error){
             console.error(`Error: `, error);
         }
@@ -163,6 +163,59 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function updateRecipe() {
         // Implement update logic here
+        // Implement delete logic here
+        let updateInput = updateRecipeInput.value;
+        let updateInstruction = updateInstructionInput.value;
+
+        const getRequestBody = {name: updateInput, instruction: updateInstruction};
+
+        const getRequestOptions = {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify(getRequestBody)
+        };
+
+        const deleteRequestOptions = {
+            method: "DELETE",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify("")
+        };
+
+        try{
+            let getRequest = await fetch(BASE_URL, getRequestOptions);
+            const data = await getRequest.json();
+
+            if(data){
+               await fetch(`${BASE_URL}/{${data.id}}`, deleteRequestOptions);
+
+               getRecipes;
+            }
+            else{
+                console.error(`Unknown issue: `, getRequest.status, getRequest.statusText);
+            }
+
+        }catch(error){
+            console.error(`Error: `, error);
+        }
+
     }
 
     /**
