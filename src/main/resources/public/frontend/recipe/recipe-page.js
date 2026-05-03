@@ -124,7 +124,33 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function addRecipe() {
         // Implement add logic here
-        let addRecipe = 
+        let addRecipe = addRecipeInput.value;
+        let addInstruction = addInstructionInput.value;
+
+        const requestBody = {name: addRecipe, instructions: addInstruction};
+
+        const requestOptions = {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify(requestBody)
+        };
+
+        try{
+            await fetch(`${BASE_URL}/recipes`, requestOptions);
+            getRecipes;
+            
+        }catch(error){
+            console.error(`Error: `, error);
+        }
     }
 
     /**
