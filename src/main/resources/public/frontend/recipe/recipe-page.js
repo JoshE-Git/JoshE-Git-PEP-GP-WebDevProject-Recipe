@@ -104,11 +104,8 @@ window.addEventListener("DOMContentLoaded", () => {
             let request = await fetch(BASE_URL, requestOptions);
             const data = await request.json();
 
-            //Somethings goes here
-
-
-
-
+            recipes = [{name: data.name, recipe: data.instructions}];
+            refreshRecipeList;
 
 
 
@@ -150,6 +147,57 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function deleteRecipe() {
         // Implement delete logic here
+        let deleteInput = deleteRecipeInput.value;
+
+        const getRequestBody = {search: deleteInput};
+
+        const getRequestOptions = {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify(getRequestBody)
+        };
+
+        const deleteRequestOptions = {
+            method: "DELETE",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify("")
+        };
+
+        try{
+            let getRequest = await fetch(BASE_URL, getRequestOptions);
+            const data = await getRequest.json();
+
+            if(data){
+               await fetch(`${BASE_URL}/{${data.id}}`, deleteRequestOptions);
+
+               getRecipes;
+            }
+            else{
+                console.error(`Unknown issue: `, getRequest.status, getRequest.statusText);
+            }
+
+        }catch(error){
+            console.error(`Error: `, error);
+        }
+
     }
 
     /**
