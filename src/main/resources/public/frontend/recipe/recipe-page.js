@@ -349,7 +349,34 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function processLogout() {
         // Implement logout logic here
-        
+        const requestOptions = {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*"
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify("")
+        };
+
+        try{
+            await fetch(`${BASE_URL}/logout`, requestOptions);
+
+            sessionStorage.clear();
+
+            setTimeout(() => {
+                window.location.href = "login-page.html";
+            }, 500);
+            
+        }catch(error){
+            console.error(`Error: `, error);
+        }
+
     }
 
 });
