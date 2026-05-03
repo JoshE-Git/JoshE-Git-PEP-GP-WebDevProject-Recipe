@@ -91,6 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token")
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -135,6 +136,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -175,6 +177,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -190,6 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -237,6 +241,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -252,6 +257,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -294,6 +300,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -355,6 +362,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
@@ -372,7 +380,7 @@ window.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 window.location.href = "login-page.html";
             }, 500);
-            
+
         }catch(error){
             console.error(`Error: `, error);
         }
