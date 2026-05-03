@@ -349,6 +349,7 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function processLogout() {
         // Implement logout logic here
+        
     }
 
 });
