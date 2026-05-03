@@ -184,8 +184,8 @@ window.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(getRequestBody)
         };
 
-        const deleteRequestOptions = {
-            method: "DELETE",
+        const updateRequestOptions = {
+            method: "PUT",
             mode: "cors",
             cache: "no-cache",
             credentials: "same-origin",
@@ -204,7 +204,7 @@ window.addEventListener("DOMContentLoaded", () => {
             const data = await getRequest.json();
 
             if(data){
-               await fetch(`${BASE_URL}/{${data.id}}`, deleteRequestOptions);
+               await fetch(`${BASE_URL}/{${data.id}}`, updateRequestOptions);
 
                getRecipes;
             }
