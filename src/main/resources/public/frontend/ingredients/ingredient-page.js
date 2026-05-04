@@ -52,6 +52,39 @@ window.onload = function(){getIngredients;};
  */
 async function addIngredient() {
     // Implement add ingredient logic here
+    let ingredientInput = addIngredientNameInput.ariaValueMax.trim();
+
+    try{
+
+        if(ingredientInput){
+            const requestBody = {name: ingredientInput};
+
+            const requestOptions = {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                credentials: "same-origin",
+                headers: {
+                    "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "*"
+                },
+                redirect: "follow",
+                referrerPolicy: "no-referrer",
+                body: JSON.stringify(requestBody)
+            };
+
+            await fetch(`${BASE_URL}/ingredients`, requestOptions);
+            getIngredients;
+    
+        }
+        else{
+            console.error(`Input is empty`);
+        }
+    }catch(error){
+        console.error(`Error: `, error);
+    }
 }
 
 
