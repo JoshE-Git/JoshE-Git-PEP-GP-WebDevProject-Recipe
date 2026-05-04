@@ -176,7 +176,7 @@ async function deleteIngredient() {
         else{
             console.error(`Input is empty`);
         }
-        
+
     }catch(error){
         console.error(`Error: `, error);
     }
@@ -195,4 +195,7 @@ async function deleteIngredient() {
  */
 function refreshIngredientList() {
     // Implement ingredient list rendering logic here
+    ingredientList.innerHTML = "";
+
+    ingredients.
 }
