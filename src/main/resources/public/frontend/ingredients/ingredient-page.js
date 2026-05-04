@@ -52,7 +52,7 @@ window.onload = function(){getIngredients;};
  */
 async function addIngredient() {
     // Implement add ingredient logic here
-    let ingredientInput = addIngredientNameInput.ariaValueMax.trim();
+    let ingredientInput = addIngredientNameInput.value.trim();
 
     try{
 
@@ -146,6 +146,40 @@ async function getIngredients() {
  */
 async function deleteIngredient() {
     // Implement delete ingredient logic here
+    let deleteInput = deleteIngredientNameInput.value.trim();
+    
+
+    try{
+        if(deleteInput){
+            let deleteId = ingredients.findIndex(function(word){return word == deleteInput}) + 1;
+
+            const deleteRequestOptions = {
+                method: "DELETE",
+                mode: "cors",
+                cache: "no-cache",
+                credentials: "same-origin",
+                headers: {
+                    "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "*"
+                },
+                redirect: "follow",
+                referrerPolicy: "no-referrer",
+                body: JSON.stringify("")
+            };
+
+            await fetch(`${BASE_URL}/{${deleteId}}`, deleteRequestOptions);
+
+            getIngredients;
+        }
+        else{
+            console.error(`Input is empty`);
+        }
+        
+    }catch(error){
+        console.error(`Error: `, error);
+    }
 }
 
 

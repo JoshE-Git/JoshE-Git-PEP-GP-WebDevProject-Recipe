@@ -231,6 +231,8 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function deleteRecipe() {
         // Implement delete logic here
+
+        //Fix this later
         let deleteInput = deleteRecipeInput.value;
 
         const deleteRequestOptions = {
@@ -252,7 +254,9 @@ window.addEventListener("DOMContentLoaded", () => {
         try{
 
             if(deleteInput){
-               await fetch(`${BASE_URL}/{${deleteInput.id}}`, deleteRequestOptions);
+                let deleteId = recipes.findIndex(function(word){return word == deleteInput}) + 1;
+
+               await fetch(`${BASE_URL}/{${deleteId}}`, deleteRequestOptions);
 
                getRecipes;
             }
