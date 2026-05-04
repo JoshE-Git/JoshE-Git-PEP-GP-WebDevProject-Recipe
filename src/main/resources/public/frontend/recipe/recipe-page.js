@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         try{
-            let request = await fetch(BASE_URL, requestOptions);
+            let request = await fetch(`${BASE_URL}/recipes`, requestOptions);
             const data = await request.json();
 
             recipes = [{name: data.name, recipe: data.instructions}];
@@ -204,7 +204,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         try{
-            let getRequest = await fetch(BASE_URL, getRequestOptions);
+            let getRequest = await fetch(`${BASE_URL}/recipes`, getRequestOptions);
             const data = await getRequest.json();
 
             if(data){
@@ -268,7 +268,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         try{
-            let getRequest = await fetch(BASE_URL, getRequestOptions);
+            let getRequest = await fetch(`${BASE_URL}/recipes`, getRequestOptions);
             const data = await getRequest.json();
 
             if(data){
@@ -311,7 +311,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         try{
-            let request = await fetch(BASE_URL, requestOptions);
+            let request = await fetch(`${BASE_URL}/recipes`, requestOptions);
             const data = await request.json();
 
             let arrIndex = 0;

@@ -99,6 +99,37 @@ async function addIngredient() {
  */
 async function getIngredients() {
     // Implement get ingredients logic here
+    const requestOptions = {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify("")
+    };
+
+    try{
+        let request = await fetch(`${BASE_URL}/ingredients`, requestOptions);
+        const data = await request.json();
+
+        let arrIndex = 0;
+
+        for(element in data){
+            ingredients[arrIndex] = {name: element.name};
+            ++arrIndex;
+        }
+
+        refreshIngredientList;
+    }catch(error){
+        console.error(`Error: `, error);
+    }
 }
 
 
