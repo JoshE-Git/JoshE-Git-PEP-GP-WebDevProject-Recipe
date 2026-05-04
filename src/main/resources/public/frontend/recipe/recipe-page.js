@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
-                "Authorization": "Bearer " + sessionStorage.getItem("auth-token")
+                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
