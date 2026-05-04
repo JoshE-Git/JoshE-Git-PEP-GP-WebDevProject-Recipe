@@ -233,24 +233,6 @@ window.addEventListener("DOMContentLoaded", () => {
         // Implement delete logic here
         let deleteInput = deleteRecipeInput.value;
 
-        const getRequestBody = {search: deleteInput};
-
-        const getRequestOptions = {
-            method: "GET",
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "same-origin",
-            headers: {
-                "Authorization": "Bearer " + sessionStorage.getItem("auth-token"),
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "*"
-            },
-            redirect: "follow",
-            referrerPolicy: "no-referrer",
-            body: JSON.stringify(getRequestBody)
-        };
-
         const deleteRequestOptions = {
             method: "DELETE",
             mode: "cors",
@@ -268,11 +250,9 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         try{
-            let getRequest = await fetch(`${BASE_URL}/recipes`, getRequestOptions);
-            const data = await getRequest.json();
 
-            if(data){
-               await fetch(`${BASE_URL}/{${data.id}}`, deleteRequestOptions);
+            if(deleteInput){
+               await fetch(`${BASE_URL}/{${deleteInput.id}}`, deleteRequestOptions);
 
                getRecipes;
             }
