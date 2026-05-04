@@ -300,7 +300,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             let arrIndex = 0;
 
-            for(element in data){
+            for(element of data){
                 recipes[arrIndex] = {name: element.name, recipe: element.instructions};
                 ++arrIndex;
             }

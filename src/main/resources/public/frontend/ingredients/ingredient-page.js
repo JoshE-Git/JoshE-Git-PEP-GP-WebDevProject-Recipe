@@ -121,7 +121,7 @@ async function getIngredients() {
 
         let arrIndex = 0;
 
-        for(element in data){
+        for(element of data){
             ingredients[arrIndex] = {name: element.name};
             ++arrIndex;
         }
@@ -197,5 +197,9 @@ function refreshIngredientList() {
     // Implement ingredient list rendering logic here
     ingredientList.innerHTML = "";
 
-    ingredients.
+    for(element of ingredients){
+        let liElement = document.createElement("li");
+        liElement.innerText = element;
+        ingredientList
+    }
 }
