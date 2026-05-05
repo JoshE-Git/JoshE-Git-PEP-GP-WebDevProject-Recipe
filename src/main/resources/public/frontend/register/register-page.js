@@ -64,12 +64,12 @@ async function processRegistration() {
         let email = emailInput.value;
         let password = passwordInput.value;
         let repeatedPassword = repeatedPasswordInput.value;
-        /*if(!username || !email || !password || !repeatedPassword){
+        if(!username || !email || !password || !repeatedPassword){
             throw new Error(`Field(s) are empty.`);
         }
         if(password != repeatedPassword){
             throw new Error(`Passwords must match.`);
-        }*/
+        }
 
         const registerBody = {username: username, email: email, password: password};
 
