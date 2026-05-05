@@ -44,21 +44,36 @@ registerButton.addEventListener("click", processRegistration);
  */
 async function processRegistration() {
     // Implement registration logic here
+    const requestOptions = {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(registerBody)
+    };
+
     try{
         let username = usernameInput.value;
         let email = emailInput.value;
         let password = passwordInput.value;
         let repeatedPassword = repeatedPasswordInput.value;
         if(!username || !email || !password || !repeatedPassword){
-            //throw new Error(`Field(s) are empty.`);
+            throw new Error(`Field(s) are empty.`);
         }
         if(password != repeatedPassword){
-            //throw new Error(`Passwords must match.`);
+            throw new Error(`Passwords must match.`);
         }
 
         const registerBody = {username: username, email: email, password: password};
 
-        const response = await fetch(`${BASE_URL}/register`, requestOptions);
+        const response = await fetch(`${this.BASE_URL}/register`, requestOptions);
         
 
         if(response.status == 201){
@@ -84,20 +99,7 @@ async function processRegistration() {
     }
     // Example placeholder:
     // const registerBody = { username, email, password };
-const requestOptions = {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "*"
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify(registerBody)
-    };
+
     // await fetch(...)
 }
 
