@@ -82,7 +82,7 @@ async function processRegistration() {
 
 
             setTimeout(() => {
-                window.location.href = "login-page.html";
+                window.location.href = "http://localhost:8081/login";
             }, 500);
            
         }
