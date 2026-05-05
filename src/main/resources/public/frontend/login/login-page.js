@@ -91,9 +91,11 @@ async function processLogin() {
         }
         else if(request.status == 401){
             console.error(`Incoreect login: `, request.status, request.statusText);
+            throw new Error('Incorrect username or password');
         }
         else{
             console.error(`Unknown issue: `, request.status, request.statusText);
+            throw new Error('Generic error message');
         }
 
         // TODO: Optionally show the logout button if applicable
