@@ -306,7 +306,7 @@ window.addEventListener("DOMContentLoaded", () => {
             let arrIndex = 0;
 
             for(element of data){
-                recipes[arrIndex] = {name: element.name, recipe: element.instructions};
+                recipes[arrIndex] = {name: element.name, instructions: element.instructions};
                 ++arrIndex;
             }
 
@@ -329,7 +329,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         for(element of recipes){
             let liElement = document.createElement("li");
-            liElement.innerText = element;
+            liElement.innerText = `${element.name} ${element.instructions}`;
             recipeList;
         }
     }
