@@ -366,13 +366,16 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         try{
-            await fetch(`${BASE_URL}/logout`, requestOptions);
-
-            sessionStorage.clear();
-
-            setTimeout(() => {
-                window.location.href = "login-page.html";
-            }, 500);
+            fetch(`${BASE_URL}/logout`, requestOptions).then(async (response) => {
+                if (response.ok) {
+                  sessionStorage.clear();
+                  setTimeout(() => {
+                    window.location.href = "../login/login-page.html";
+                  }, 500);
+                }else {
+                    window.alert("Unknown issue!");
+                }
+              });
 
         }catch(error){
             console.error(`Error: `, error);
