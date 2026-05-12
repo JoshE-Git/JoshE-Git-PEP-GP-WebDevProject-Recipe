@@ -125,10 +125,8 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function addRecipe() {
         // Implement add logic here
-        let addRecipe = addRecipeInput.value;
-        let addInstruction = addInstructionInput.value;
-
-        const requestBody = {name: addRecipe, instructions: addInstruction};
+        let addRecipe = addRecipeInput.value.trim();
+        let addInstruction = addInstructionInput.value.trim();
 
         const requestOptions = {
             method: "POST",
@@ -143,15 +141,22 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify(requestBody)
+            body: JSON.stringify({name: addRecipe, instructions: addInstruction})
         };
 
         try{
-            await fetch(`${BASE_URL}/recipes`, requestOptions);
-            getRecipes;
+            const response = await fetch(`${BASE_URL}/recipes`, requestOptions);
+            if(response.ok){
+                addRecipeInput.value = "";
+                addInstructionInput.value = "";
 
-        }catch(error){
-            console.error(`Error: `, error);
+                getRecipes();
+            }
+            else{
+                alert("Add Recipe Error");
+            }
+        }catch(e){
+            alert("Add Recipe Error");
         }
     }
 
