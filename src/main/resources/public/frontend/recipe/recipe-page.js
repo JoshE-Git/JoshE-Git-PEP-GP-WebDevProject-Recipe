@@ -327,13 +327,11 @@ window.addEventListener("DOMContentLoaded", () => {
         // Implement refresh logic here
         recipeList.innerHTML = "";
 
-        recipes.forEach(
-            function(name, recipe){
-                let liElement = document.createElement("li");
-                liElement.innerText = `${name} ${recipe}`;
-                recipeList.appendChild(liElement);
-            }
-        )
+        for(element of recipes){
+            let liElement = document.createElement("li");
+            liElement.innerText = element;
+            recipeList;
+        }
     }
 
     /**
