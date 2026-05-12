@@ -171,10 +171,10 @@ window.addEventListener("DOMContentLoaded", () => {
     async function updateRecipe() {
         // Implement update logic here
         // Implement delete logic here
-        let updateInput = updateRecipeInput.value;
-        let updateInstruction = updateInstructionInput.value;
+        let updateInput = updateRecipeInput.value.trim();
+        let updateInstruction = updateInstructionInput.value.trim();
 
-        const getRequestBody = {name: updateInput, instruction: updateInstruction};
+        const requestBody = {name: updateInput, instruction: updateInstruction};
 
         const getRequestOptions = {
             method: "GET",
@@ -189,7 +189,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify(getRequestBody)
+            body: JSON.stringify(requestBody)
         };
 
         const updateRequestOptions = {
@@ -205,21 +205,27 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify("")
+            body: JSON.stringify(requestBody)
         };
 
         try{
-            let getRequest = await fetch(`${BASE_URL}/recipes`, getRequestOptions);
-            const data = await getRequest.json();
+            if(updateInput && updateInstruction){
+                let getRequest = await fetch(`${BASE_URL}/recipes`, getRequestOptions);
+                const data = await getRequest.json();
 
-            if(data){
-               await fetch(`${BASE_URL}/{${data.id}}`, updateRequestOptions);
+                if(data){
+                    await fetch(`${BASE_URL}/{${data.id}}`, updateRequestOptions);
 
-               getRecipes;
+                    getRecipes;
+                }
+                else{
+                    console.error(`Unknown issue: `, getRequest.status, getRequest.statusText);
+                }
             }
             else{
-                console.error(`Unknown issue: `, getRequest.status, getRequest.statusText);
+                console.error(`Input field is empty`);
             }
+            
 
         }catch(error){
             console.error(`Error: `, error);
@@ -238,8 +244,8 @@ window.addEventListener("DOMContentLoaded", () => {
         // Implement delete logic here
 
         //Fix this later
-        let deleteInput = deleteRecipeInput.value;
-
+        let deleteInput = deleteRecipeInput.value.trim();
+        try{
         const deleteRequestOptions = {
             method: "DELETE",
             mode: "cors",
@@ -256,7 +262,7 @@ window.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify("")
         };
 
-        try{
+        
 
             if(deleteInput){
                 let deleteId = recipes.findIndex(function(word){return word == deleteInput}) + 1;
@@ -329,7 +335,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         for(element of recipes){
             let liElement = document.createElement("li");
-            liElement.innerText = `${element.name} ${element.instructions}`;
+            liElement.innerText = element;
             recipeList;
         }
     }
