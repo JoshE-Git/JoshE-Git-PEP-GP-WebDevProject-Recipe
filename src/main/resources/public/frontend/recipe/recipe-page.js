@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
     /*
      * TODO: On page load, call getRecipes() to populate the list
      */
-    window.onload = function(){getRecipes;};
+    window.addEventListener("load", getRecipes);
 
 
     /**
