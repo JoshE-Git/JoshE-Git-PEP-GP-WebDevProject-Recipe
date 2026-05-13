@@ -141,7 +141,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify({name: addRecipe, instructions: addInstruction})
+            body: JSON.stringify({name: addRecipe, instructions: addInstruction}),
         };
 
         try{
@@ -189,7 +189,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify(requestBody)
+            body: JSON.stringify(requestBody),
         };
 
         const updateRequestOptions = {
@@ -205,7 +205,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify(requestBody)
+            body: JSON.stringify(requestBody),
         };
 
         try{
@@ -259,7 +259,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify("")
+            body: JSON.stringify(""),
         };
 
         
@@ -302,7 +302,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify("")
+            body: JSON.stringify(""),
         };
 
         try{
@@ -362,7 +362,7 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             redirect: "follow",
             referrerPolicy: "no-referrer",
-            body: JSON.stringify("")
+            body: JSON.stringify(""),
         };
 
         try{
