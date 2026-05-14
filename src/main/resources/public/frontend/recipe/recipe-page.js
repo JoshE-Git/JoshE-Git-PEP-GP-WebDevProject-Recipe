@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function addRecipe() {
         // Implement add logic here
-       /* let addRecipe = addRecipeInput.value.trim();
+        let addRecipe = addRecipeInput.value.trim();
         let addInstruction = addInstructionInput.value.trim();
 
         const requestOptions = {
@@ -157,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }catch(e){
             alert("Add Recipe Error");
-        }*/
+        }
     }
 
     /**
@@ -289,7 +289,7 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function getRecipes() {
         // Implement get logic here
-        const requestOptions = {
+       /* const requestOptions = {
             method: "GET",
             mode: "cors",
             cache: "no-cache",
@@ -319,7 +319,7 @@ window.addEventListener("DOMContentLoaded", () => {
             refreshRecipeList();
         }catch(error){
             console.error(`Error: `, error);
-        }
+        }*/
 
     }
 
