@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     async function addRecipe() {
         // Implement add logic here
-        let addRecipe = addRecipeInput.value.trim();
+       /* let addRecipe = addRecipeInput.value.trim();
         let addInstruction = addInstructionInput.value.trim();
 
         const requestOptions = {
@@ -157,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }catch(e){
             alert("Add Recipe Error");
-        }
+        }*/
     }
 
     /**
