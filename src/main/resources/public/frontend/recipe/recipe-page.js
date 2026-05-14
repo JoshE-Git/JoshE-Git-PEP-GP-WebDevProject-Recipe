@@ -316,7 +316,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 ++arrIndex;
             }
 
-            refreshRecipeList;
+            refreshRecipeList();
         }catch(error){
             console.error(`Error: `, error);
         }
