@@ -3,37 +3,41 @@
  providing a user registration form with fields for username, email, and password.
 -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - User Registration Page</title>
-    <link rel="stylesheet" href="register-page.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="register-page.css" />
+  </head>
+  <body>
     <!-- TODO: Add a heading (h1) with text "Register" -->
     <h1>Register</h1>
+
     <!-- TODO: Add a label or paragraph for "Username" -->
+    <label for="Username">Username</label>
     <!-- TODO: Add an input element for username with id="username-input" -->
-    <p>Username</p>
-    <input id="username-input">
+    <input id="username-input" name="Username" type="text" />
+
     <!-- TODO: Add a label or paragraph for "Email" -->
+    <label for="Email">Email</label>
     <!-- TODO: Add an input element for email with id="email-input" and type="email" -->
-    <p>Email</p>
-    <input id="email-input" type="email">
+    <input id="email-input" type="email" name="Email" />
+
     <!-- TODO: Add a label or paragraph for "Password" -->
     <!-- TODO: Add an input element for password with id="password-input" and type="password" -->
-    <p>Password</p>
-    <input id="password-input" type="password">
+    <label for="Password">Password</label>
+    <input id="password-input" type="password" name="Password" />
+
     <!-- TODO: Add a label or paragraph for "Repeat Password" -->
+    <label for="Repeat Password">Repeat Password</label>
     <!-- TODO: Add an input element for repeat password with id="repeat-password-input" and type="password" -->
-    <p>Repeat Password</p>
-    <input id="repeat-password-input" type="password">
+    <input id="repeat-password-input" type="password" name="Repeat Password" />
+
     <!-- TODO: Add a register button with id="register-button" and text "Register" -->
     <button id="register-button">Register</button>
 
     <script src="register-page.js"></script>
-</body>
+  </body>
 </html>

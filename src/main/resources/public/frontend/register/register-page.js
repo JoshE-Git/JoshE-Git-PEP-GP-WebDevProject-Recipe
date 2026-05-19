@@ -11,7 +11,7 @@ const BASE_URL = "http://localhost:8081"; // backend URL
 let usernameInput = document.getElementById("username-input");
 let emailInput = document.getElementById("email-input");
 let passwordInput = document.getElementById("password-input");
-let repeatedPasswordInput = document.getElementById("repeat-password-input");
+let repeatPasswordInput = document.getElementById("repeat-password-input");
 let registerButton = document.getElementById("register-button");
 
 /*
@@ -42,71 +42,6 @@ registerButton.addEventListener("click", processRegistration);
  * - Wrap in try/catch
  * - Log error and alert user
  */
-// async function processRegistration() {
-//   // Implement registration logic here
-//   const requestOptions = {
-//     method: "POST",
-//     mode: "cors",
-//     cache: "no-cache",
-//     credentials: "same-origin",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Access-Control-Allow-Origin": "*",
-//       "Access-Control-Allow-Headers": "*",
-//     },
-//     redirect: "follow",
-//     referrerPolicy: "no-referrer",
-//     body: JSON.stringify(registerBody),
-//   };
-
-//   try {
-//     let username = usernameInput.value;
-//     let email = emailInput.value;
-//     let password = passwordInput.value;
-//     let repeatedPassword = repeatedPasswordInput.value;
-//     if (!username || !email || !password || !repeatedPassword) {
-//       throw new Error(`Field(s) are empty.`);
-//     }
-//     if (password != repeatedPassword) {
-//       throw new Error(`Passwords must match.`);
-//     }
-
-//     const registerBody = {
-//       username: username,
-//       email: email,
-//       password: password,
-//     };
-
-//     const response = await fetch(`${this.BASE_URL}/register`, requestOptions);
-
-//     if (response.status == 201) {
-//       const data = await response.json();
-//       console.log(`Fetched data: `, data);
-
-//       setTimeout(() => {
-//         window.location.href = "../login/login-page.html";
-//       }, 500);
-//     } else if (response.status == 409) {
-//       console.error(
-//         `User/email already exisit`,
-//         response.status,
-//         response.statusText,
-//       );
-//     } else {
-//       console.error(
-//         `Error with registration: `,
-//         response.status,
-//         response.statusText,
-//       );
-//     }
-//   } catch (error) {
-//     console.error(`Error: `, error);
-//   }
-//   // Example placeholder:
-//   // const registerBody = { username, email, password };
-
-//   // await fetch(...)
-// }
 async function processRegistration() {
   // Implement registration logic here
 
